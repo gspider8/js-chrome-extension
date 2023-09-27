@@ -8,7 +8,14 @@ const ulEl = document.getElementById("ul-el")
 inputBtn.addEventListener("click", function() {
     myCaptures.push(inputEl.value)
     inputEl.value = ""
+    // Save the myCaptures array to localStorage 
+    // PS: remember JSON.stringify()
+    localStorage.setItem("myCaptures", JSON.stringify(myCaptures))
+
     renderLeads()
+
+    // To verify that it works:
+    console.log( localStorage.getItem("myCaptures") )
 })
 
 function renderLeads() {
