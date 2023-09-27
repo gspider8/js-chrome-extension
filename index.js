@@ -11,14 +11,13 @@ inputBtn.addEventListener("click", function() {
     console.log(myCaptures)
 })
 
-
+// 1. Create a variable, listItems, to hold all the HTML for the list items
+let listItems = ""
+// Assign it to an empty string to begin with
 for (i = 0; i < myCaptures.length; i ++) {
-    ulEl.innerHTML += "<li>" + myCaptures[i] + "</li>"
-    // Alternative method!
-    // 1. create element 
-    // const li = document.createElement("li")
-    // 2. set text content
-    // li.textContent = myCaptures[i]
-    // 3. append to ul
-    // ulEl.append(li)
+    // 2. Add the item to the listItems variable instead of the ulEl.innerHTML
+    listItems += "<li>" + myCaptures[i] + "</li>"
 }
+// 3. Render the listItems inside the unordered list using ulEl.innerHTML
+ulEl.innerHTML = listItems
+console.log(listItems)
