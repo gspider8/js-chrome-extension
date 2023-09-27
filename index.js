@@ -9,15 +9,18 @@ const ulEl = document.getElementById("ul-el")
 inputBtn.addEventListener("click", function() {
     myCaptures.push(inputEl.value)
     console.log(myCaptures)
+    renderLeads()
 })
 
-// 1. Create a variable, listItems, to hold all the HTML for the list items
-let listItems = ""
-// Assign it to an empty string to begin with
-for (i = 0; i < myCaptures.length; i ++) {
-    // 2. Add the item to the listItems variable instead of the ulEl.innerHTML
-    listItems += "<li>" + myCaptures[i] + "</li>"
+// Create function renderLeads to list out newly added inputs
+function renderLeads() {
+    // Dom manipulation comes with a cost on speed, try to miinimize document manipulatiosn
+    let listItems = ""
+    for (i = 0; i < myCaptures.length; i ++) {
+        listItems += "<li>" + myCaptures[i] + "</li>"
+    }
+    ulEl.innerHTML = listItems
+    console.log(listItems)
 }
-// 3. Render the listItems inside the unordered list using ulEl.innerHTML
-ulEl.innerHTML = listItems
-console.log(listItems)
+
+renderLeads()
