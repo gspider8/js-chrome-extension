@@ -4,18 +4,27 @@ let myCaptures = [];
 const inputEl = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
 const ulEl = document.getElementById("ul-el")
+// 1. Store the delete button in a deleteBtn variable
+const deleteBtn = document.getElementById("delete-btn")
 
-let capturesFromLocalStorage = JSON.parse(localStorage.getItem("myCaptures"))
-// 1. Check if capturesFromLocalStorage is truthy
-// 2. If so, set myCaptures to its value and call renderLeads()
-if (capturesFromLocalStorage) {
+const capturesFromLocalStorage = JSON.parse(localStorage.getItem("myCaptures")) //doesn't change
+if (capturesFromLocalStorage) { // if not empty
     myCaptures = capturesFromLocalStorage
     renderLeads()
 }
 
 console.log("leadsFromLocalStorage: " + capturesFromLocalStorage)
 
-inputBtn.addEventListener("click", function() {+
+// 2. Listen for double clicks on the delete button (google it!)
+deleteBtn.addEventListener("dblclick", function() {
+    // 3. When clicked, clear localStorage, myLeads, and the DOM
+    console.log("delete")
+    localStorage.clear();
+    myCaptures = [];
+    renderLeads()
+})
+
+inputBtn.addEventListener("click", function() {
     //Capture new input in array and store to local Storage
     myCaptures.push(inputEl.value)
     localStorage.setItem("myCaptures", JSON.stringify(myCaptures))
