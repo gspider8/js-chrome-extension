@@ -11,8 +11,14 @@ inputBtn.addEventListener("click", function() {
     console.log(myCaptures)
 })
 
-// Log out the items in the myLeads array using a for loop 
-// Replace .textContent with .innerHTML and use <li> tags
+
 for (i = 0; i < myCaptures.length; i ++) {
     ulEl.innerHTML += "<li>" + myCaptures[i] + "</li>"
+    // Alternative method!
+    // 1. create element 
+    // const li = document.createElement("li")
+    // 2. set text content
+    // li.textContent = myCaptures[i]
+    // 3. append to ul
+    // ulEl.append(li)
 }
