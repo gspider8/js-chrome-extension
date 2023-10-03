@@ -14,17 +14,17 @@ if (capturesFromLocalStorage) { // if not empty
     render(myCaptures)
 }
 
-const tabs = [
-    {url: "https://www.linkedin.com/in/per-harald-borgen/"}
-]
+// outdated - stand in
 
 // 2. Listen for clicks on tabBtn. Log Per's LinkedIn URL to the console
 tabBtn.addEventListener("click", function() {
-    // console.log(tabs[0].url)
-    // Save the url instead of logging it out
-    myCaptures.push(tabs[0].url)
-    localStorage.setItem("myCaptures", JSON.stringify(myCaptures))
-    render(myCaptures)
+    // Grab the URL from the chrome browser 
+    // chrome.tabs is an api that only works in a chrome browser
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        myCaptures.push(tabs[0].url)
+        localStorage.setItem("myCaptures", JSON.stringify(myCaptures))
+        render(myCaptures)
+    })    
 })
 
 
