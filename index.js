@@ -20,7 +20,11 @@ const tabs = [
 
 // 2. Listen for clicks on tabBtn. Log Per's LinkedIn URL to the console
 tabBtn.addEventListener("click", function() {
-    console.log(tabs[0].url)
+    // console.log(tabs[0].url)
+    // Save the url instead of logging it out
+    myCaptures.push(tabs[0].url)
+    localStorage.setItem("myCaptures", JSON.stringify(myCaptures))
+    render(myCaptures)
 })
 
 
