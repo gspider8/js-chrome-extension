@@ -9,7 +9,24 @@ const deleteBtn = document.getElementById("delete-btn")
 const capturesFromLocalStorage = JSON.parse(localStorage.getItem("myCaptures")) //doesn't change
 if (capturesFromLocalStorage) { // if not empty
     myCaptures = capturesFromLocalStorage
-    renderList()
+    render(myCaptures)
+}
+
+//refactor renderList function by passing in a specific link list
+function render(list) {
+    // Dom manipulation comes with a cost on speed, try to miinimize document manipulatiosn
+    let listItems = ""
+    for (i = 0; i < list.length; i ++) {
+        // Use `` backticks to make template literals, looks a lot cleaner
+        listItems += `
+            <li>
+                <a target="_blank" href="${list[i]}">
+                    ${list[i]}
+                </a>
+            </li>
+        `
+    }
+    ulEl.innerHTML = listItems
 }
 
 deleteBtn.addEventListener("dblclick", function() {
@@ -17,7 +34,7 @@ deleteBtn.addEventListener("dblclick", function() {
     console.log("delete")
     localStorage.clear();
     myCaptures = [];
-    renderList()
+    render(myCaptures)
 })
 
 inputBtn.addEventListener("click", function() {
@@ -26,21 +43,5 @@ inputBtn.addEventListener("click", function() {
     localStorage.setItem("myCaptures", JSON.stringify(myCaptures))
     // Clear input box
     inputEl.value = ""
-    renderList()
+    render(myCaptures)
 })
-
-function renderList() {
-    // Dom manipulation comes with a cost on speed, try to miinimize document manipulatiosn
-    let listItems = ""
-    for (i = 0; i < myCaptures.length; i ++) {
-        // Use `` backticks to make template literals, looks a lot cleaner
-        listItems += `
-            <li>
-                <a target="_blank" href="${myCaptures[i]}">
-                    ${myCaptures[i]}
-                </a>
-            </li>
-        `
-    }
-    ulEl.innerHTML = listItems
-}
