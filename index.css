@@ -28,6 +28,11 @@ button:hover {
     color: white;
 }
 
+#tab-btn {
+    background-color: #5f9341;
+    color: white;
+}
+
 #delete-btn {
     background-color: white;
     color: #5f9341;
