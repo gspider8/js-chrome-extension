@@ -5,6 +5,8 @@ const inputEl = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
 const ulEl = document.getElementById("ul-el")
 const deleteBtn = document.getElementById("delete-btn")
+// 1. Grab the SAVE TAB button and store it in a tabBtn variable
+const tabBtn = document.getElementById("tab-btn")
 
 const capturesFromLocalStorage = JSON.parse(localStorage.getItem("myCaptures")) //doesn't change
 if (capturesFromLocalStorage) { // if not empty
@@ -12,7 +14,16 @@ if (capturesFromLocalStorage) { // if not empty
     render(myCaptures)
 }
 
-//refactor renderList function by passing in a specific link list
+const tabs = [
+    {url: "https://www.linkedin.com/in/per-harald-borgen/"}
+]
+
+// 2. Listen for clicks on tabBtn. Log Per's LinkedIn URL to the console
+tabBtn.addEventListener("click", function() {
+    console.log(tabs[0].url)
+})
+
+
 function render(list) {
     // Dom manipulation comes with a cost on speed, try to miinimize document manipulatiosn
     let listItems = ""
